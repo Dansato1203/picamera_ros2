@@ -80,7 +80,7 @@ void LibcameraApp::ConfigureStill(unsigned int flags)
 
 	// Always request a raw stream as this forces the full resolution capture mode.
 	// (options_->mode can override the choice of camera mode, however.)
-	StreamRoles stream_roles = { StreamRole::StillCapture, StreamRole::Raw };
+	std::vector<libcamera::StreamRole> stream_roles = { libcamera::StreamRole::StillCapture, libcamera::StreamRole::Raw };
 	configuration_ = camera_->generateConfiguration(stream_roles);
 	if (!configuration_)
 		throw std::runtime_error("failed to generate still capture configuration");
@@ -125,7 +125,7 @@ void LibcameraApp::ConfigureViewfinder()
     if (options_->verbose)
         std::cerr << "Configuring viewfinder..." << std::endl;
 
-    StreamRoles stream_roles = { StreamRole::Viewfinder };
+    std::vector<libcamera::StreamRole> stream_roles = { libcamera::StreamRole::Viewfinder };
     configuration_ = camera_->generateConfiguration(stream_roles);
     if (!configuration_)
         throw std::runtime_error("failed to generate viewfinder configuration");
