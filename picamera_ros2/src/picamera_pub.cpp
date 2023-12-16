@@ -7,9 +7,9 @@ PiCameraROS::PiCameraROS(const rclcpp::NodeOptions &options_): Node("picamera_ro
 {
     this->camera_ = new lccv::PiCamera();
 
-    this->declare_parameter("video_width", 1280);
-    this->declare_parameter("video_height", 720);
-    this->declare_parameter("framerate", 30);
+    this->declare_parameter("video_width", 640);
+    this->declare_parameter("video_height", 480);
+    this->declare_parameter("framerate", 45);
     this->declare_parameter("hdr", true);
     this->declare_parameter("verbose", false);
 
